@@ -73,13 +73,16 @@
 
             if (x % 10 === 1 && x % 100 !== 11) {
                 word = "запись";
+                word2 = "Найдена";
             } else if (x % 10 >= 2 && x % 10 <= 4 && (x % 100 < 10 || x % 100 >= 20)) {
                 word = "записи";
+                word2 = "Найдены";
             } else {
                 word = "записей";
+                word2 = "Найдено";
             }
 
-            document.getElementById('pluralizeResult').innerText = `Вывод: Было найдено ${x} ${word}.`;
+            document.getElementById('pluralizeResult').innerText = `Вывод: ${word2} ${x} ${word}.`;
         }
 
         function fibb() {

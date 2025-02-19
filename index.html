@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Хлопцев А.А. 231-361, лабораторная работа №6</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        function pow() {
+
+            let x = parseFloat(document.getElementById('powX').value);
+            let g = parseInt(document.getElementById('powN').value);
+
+            if (isNaN(x) || isNaN(g) || g < 0) {
+                document.getElementById('powResult').innerText = "Ошибка: некорректный ввод данных";
+                return;
+            }
+
+            document.getElementById('powResult').innerText = `Вывод: ${Math.pow(x, g)}`;
+        }
+
+        function gcd() {
+
+            let a = parseInt(document.getElementById('gcdA').value);
+            let b = parseInt(document.getElementById('gcdB').value);
+
+            if (isNaN(a) || isNaN(b) || a <= 0 || b <= 0) {
+                document.getElementById('gcdResult').innerText = "Ошибка: числа должны быть положительными";
+                return;
+            }
+
+            while (b !== 0) {
+                [a, b] = [b, a % b];
+            }
+
+            document.getElementById('gcdResult').innerText = `Вывод: ${a}`;
+        }
+
+        function minDigit() {
+
+            let x = parseInt(document.getElementById('minDigitX').value);
+
+            if (isNaN(x) || x <= 0) {
+                document.getElementById('minDigitResult').innerText = "Ошибка: введите положительное число";
+                return;
+            }
+
+            let min = 9;
+
+            while (x > 0) {
+                let digit = x % 10;
+                if (digit < min) {
+                    min = digit;
+                }
+                x = Math.floor(x / 10);
+            }
+
+            document.getElementById('minDigitResult').innerText = `Вывод: ${min}`;
+        }
+
+        function pluralizeRecords() {
+
+            let x = parseInt(document.getElementById('pluralizeN').value);
+
+
+            if (isNaN(x) || x < 0) {
+                document.getElementById('pluralizeResult').innerText = "Ошибка: введите неотрицательное число";
+                return;
+            }
+
+            let word;
+
+            if (x % 10 === 1 && x % 100 !== 11) {
+                word = "запись";
+            } else if (x % 10 >= 2 && x % 10 <= 4 && (x % 100 < 10 || x % 100 >= 20)) {
+                word = "записи";
+            } else {
+                word = "записей";
+            }
+
+            document.getElementById('pluralizeResult').innerText = `Вывод: Было найдено ${x} ${word}.`;
+        }
+
+        function fibb() {
+
+            let x = parseInt(document.getElementById('fibbN').value);
+
+            if (isNaN(x) || x < 0) {
+                document.getElementById('fibbResult').innerText = "Ошибка: введите неотрицательное число";
+                return;
+            }
+
+            let a = 0, b = 1;
+
+            for (let i = 2; i <= x; i++) {
+                [a, b] = [b, a + b];
+            }
+
+            document.getElementById('fibbResult').innerText = `Вывод: ${b}`;
+        }
+
+    </script>
+</head>
+
+<header>
+    Математические функции
+</header>
+
+<body onload="initialize()">
+    <table>
+        <tr>
+            <td>Возведение в степень:</td>
+            <td><input type="number" id="powX" placeholder="Число"> <input type="number" id="powN"
+                    placeholder="Степень"></td>
+            <td><button onclick="pow()">Запуск</button></td>
+            <td id="powResult"></td>
+        </tr>
+        <tr>
+            <td>НОД:</td>
+            <td><input type="number" id="gcdA" placeholder="Число a"> <input type="number" id="gcdB"
+                    placeholder="Число b"></td>
+            <td><button onclick="gcd()">Запуск</button></td>
+            <td id="gcdResult"></td>
+        </tr>
+        <tr>
+            <td>Минимальная цифра:</td>
+            <td><input type="number" id="minDigitX" placeholder="Число"></td>
+            <td><button onclick="minDigit()">Запуск</button></td>
+            <td id="minDigitResult"></td>
+        </tr>
+        <tr>
+            <td>Определение множественного числа слова "запись":</td>
+            <td><input type="number" id="pluralizeN" placeholder="Число"></td>
+            <td><button onclick="pluralizeRecords()">Запуск</button></td>
+            <td id="pluralizeResult"></td>
+        </tr>
+        <tr>
+            <td>Число Фибоначчи:</td>
+            <td><input type="number" id="fibbN" placeholder="Число"></td>
+            <td><button onclick="fibb()">Запуск</button></td>
+            <td id="fibbResult"></td>
+        </tr>
+    </table>
+</body>
+
+</html>

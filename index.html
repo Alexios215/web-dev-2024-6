@@ -73,16 +73,16 @@
 
             if (x % 10 === 1 && x % 100 !== 11) {
                 word = "запись";
-                word2 = "Найдена";
+                word2 = "была найдена";
             } else if (x % 10 >= 2 && x % 10 <= 4 && (x % 100 < 10 || x % 100 >= 20)) {
                 word = "записи";
-                word2 = "Найдены";
+                word2 = "были найдены";
             } else {
                 word = "записей";
-                word2 = "Найдено";
+                word2 = "было найдено";
             }
 
-            document.getElementById('pluralizeResult').innerText = `Вывод: ${word2} ${x} ${word}.`;
+            document.getElementById('pluralizeResult').innerText = `Вывод: В результате выполнения запроса ${word2} ${x} ${word}.`;
         }
 
         function fibb() {
